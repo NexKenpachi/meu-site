@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete FATEC</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Univers:wght@900&style=italic&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <p class="p1">by <a href="https://github.com/NexCorpSys" target="_blank" rel="noopener noreferrer" class="nexsystem-link">NexSystem</a></p>
+
+    <h1>
+        <span style="color: black;">LANCHONETE</span>
+        <span style="color: #39a63d;">FATEC</span>
+    </h1>
+
+    <p class="breve">Em breve...</p>
+
+    <div class="countdown">
+        <div class="quadrado">
+            <span id="dias">00</span>
+            <label>Dias</label>
+        </div>
+        <div class="quadrado">
+            <span id="horas">00</span>
+            <label>Horas</label>
+        </div>
+        <div class="quadrado">
+            <span id="minutos">00</span>
+            <label>Minutos</label>
+        </div>
+        <div class="quadrado">
+            <span id="segundos">00</span>
+            <label>Segundos</label>
+        </div>
+    </div>
+
+    <p class="subscribe-message">Inscreva-se para receber novidades!</p>
+
+    <div class="subscribe">
+        <input type="email" placeholder="Insira seu email aqui">
+        <button>Inscrever-se</button>
+    </div>
+
+    <footer>
+        <p>Saiba mais sobre a <a href="https://github.com/NexCorpSys" target="_blank" rel="noopener noreferrer" class="nexsystem-link">NexSystem</a></p>
+        <p>&copy; Todos os direitos reservados</p>
+    </footer>
+</body>
+<script>
+    function iniciarContagemRegressiva(dataDestino) {
+        const intervalo = setInterval(() => { //note que o seInterval começa aqui e termina na penultima chave} do código
+            const agora = new Date();
+            const tempoRestante = dataDestino.getTime() - agora.getTime();
+
+            if (tempoRestante < 0) {
+                clearInterval(intervalo); // Para a contagem quando o tempo acabar
+                document.getElementById('dias').textContent = "00";
+                document.getElementById('horas').textContent = "00";
+                document.getElementById('minutos').textContent = "00";
+                document.getElementById('segundos').textContent = "00";
+                return;
+            }
+
+            const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24)); //contagem das horas pra dias
+            const horas = Math.floor((tempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); //contagem regressiva das horas
+            const minutos = Math.floor((tempoRestante % (1000 * 60 * 60)) / (1000 * 60)); //contagem regressiva dos minutos
+            const segundos = Math.floor((tempoRestante % (1000 * 60)) / 1000); //contagem regressiva dos segundos
+
+            document.getElementById('dias').textContent = dias.toString().padStart(2, '0'); //padStart coloca o numero '0' na frente do número atual, tipo '0'1:00
+            document.getElementById('horas').textContent = horas.toString().padStart(2, '0'); //funciona para os abaixo
+            document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+            document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+        }, 1000);
+    }
+
+    // Defina a data de destino (ex: 1º de julho de 2025)
+    const dataDestino = new Date("2025-07-01T00:00:00");
+    iniciarContagemRegressiva(dataDestino);//chama a função para que ela funcione ao carregar a página
+    
+
+    //condição para o usuário colocar o e-mail e receber o alerta de "obrigado por se inscrever", caso não colocar ele recebe outro alerta pedindo pra inserir um e-mail
+    const botao = document.querySelector('.subscribe button'); //querySelector retorna o primeiro elemento que corresponder ao seletor CSS. Será armazenado na constante botão
+    const campoEmail = document.querySelector('.subscribe input');//amazenado na constante campoEmail
+    
+    botao.addEventListener ('click', function(){ //addEventListener = adicina um evento ao CLICAR NO BOTÃO, fazendo aparecer o alerta.
+        const email = campoEmail.value.trim(); //pega o valor do input e remove espaços, evita que seja digitado somente espaços e seja validado; evita erros//
+        
+        if (email === ''){ //se não digitou nada mostra o alerta
+            alert('Por favor, insira um e-mail');
+        }else{
+            alert('Obrigado por se inscrever!'); //se digitou, mostra esse alerta
+        }
+    });
+</script>
+</html>
+
