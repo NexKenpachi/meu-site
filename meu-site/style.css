@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); /*adição -pam*/
+body {
+    font-family: 'Montserrat', 'Lato', 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    height: 100vh; /*vai determinar a altura total da tela*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.p1{
+  font-family: 'Krub';
+  position: relative;
+  margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Univers', sans-serif; /* a fonte original da FATEC é a Myriad Pro Black Italic. É uma fonte paga e personalizada, ainda não sabemos como colocar ela no projeto, pode ser feito com uma logo também.*/
+    position: relative;
+}
+
+.breve{
+    font-family: 'IBM PLEX SERIF';
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 500px;
+}
+/*
+.countdown div{
+    border: 2px solid #39a63d;
+    padding: 10px;
+    font-size: 15px;
+    color: #39a63d;
+}
+    (deixei comentado pois estou fazendo alterações nos quadrdos do countdown feito pelo Lucas -pam)
+*/
+.quadrado{
+    display:grid; /* Centraliza os itens dentro do quadrado */
+    place-items: center;
+    width: 75px;
+    height: 75px;
+    color: #39a63d;
+    font-size: 15px;
+    font-family: 'IBM PLEX SERIF', serif;
+    border: 2px solid #39a63d;
+    border-radius: 2%;
+    box-sizing:border-box; /*garante que o paddding e a borda sejam incluidos nas dimensões corretas do quadrado*/
+    text-align: center;
+}
+
+.quadrado span{
+    font-size: 32px;
+    line-height: 1;
+    margin-top: 20px;
+}
+
+.quadrado label{
+    margin-top: 32px;
+    letter-spacing: 0.1px;
+}
+
+
+.subscribe-message{
+    font-family: 'IBM PLEX';
+    margin-top: 25px;
+}
+.subscribe {
+    margin: 20px 0;
+}
+
+input {
+    padding: 8px;
+    width: 250px;
+    border: 2px solid #39a63d;
+    border-radius: 2px;
+    background-color: #39a63d;
+    /*fiz alguns ajustes no tamanaho do padding e no border-radius -pam */
+}
+
+/*efeito ao clicar no input*/
+input:focus{
+    outline: none; /* estava com uma borda preta quando clicava então retirei */
+    box-shadow: 0 0 5px rgba(57, 166, 61, 0.7); /* sombra sutil com a cor verde */
+    border: 2px solid #39a63d; /* Mantém a borda verde */
+    transition: box-shadow 0.2s, border-color 0.2s; /* vai suavizar a transição ao clicar*/
+}
+/*efeito ao passar o mouse no input :) */
+input:hover {
+    box-shadow: 0 0 5px rgba(57, 166, 61, 0.7); /* Sombra sutil */
+    border: 2px solid #39a63d;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+input[type="email"]::placeholder {
+    color: #ffffff;
+}
+
+button {
+    padding: 10px;
+    background-color: #39a63d;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+/*fiz ajuste no padding e no border radius -pam*/
+}
+/*adicionei o mesmo efeito no botão de se inscrever tbm*/
+button:hover{
+    box-shadow: 0 0 5px rgba(57, 166, 61, 0.7); /* Sombra sutil */
+    border: 2px solid #39a63d;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+footer {
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+/* aplicar fonte no nome da empresa na parte do footer e também aplicar efeito ao passar o mouse*/
+.nexsystem-link {
+    font-family: 'Krub', sans-serif;
+    color: #39a63d;
+    text-decoration: none;
+}
+.nexsystem-link:hover{
+    text-decoration: underline;
+}
+/*responsividade -pam*/
+@media screen and (max-width: 768px){
+    .countdown{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quadrado{
+        width: 60px;
+        height: 60px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .countdown {
+        max-width: 100%;
+        }
+
+    .quadrado {
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+        }
+
+    .quadrado span {
+        font-size: 20px; 
+        }
+}
